@@ -3,17 +3,21 @@
   "version": "1.0.1",
   "description": "GIF encoding library ",
   "author": "Kartik Dutt<npm@kartikdutt18>, Roman Viskin <npm@terikon.com>",
-  "main": "./dist/gif.js",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "repository": "https://github.com/kartikdutt18/gif.js.turbo",
   "devDependencies": {
-    "@babel/core": "^7.22.8",
-    "@babel/preset-env": "^7.22.7",
-    "babel-loader": "^9.1.3",
-    "webpack": "^5.88.1",
-    "webpack-cli": "^5.1.4",
-    "webpack-merge": "^5.9.0"
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "@typescript-eslint/parser": "^6.4.0",
+    "eslint": "^8.47.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.2",
+    "typescript": "^5.1.6"
   },
   "scripts": {
+    "watch": "tsc -w -p tsconfig.json",
     "prepublish": "webpack --config build/webpack.main.config.js && webpack --config build/webpack.worker.config.js"
   },
   "browser": "./dist/gif.js",
