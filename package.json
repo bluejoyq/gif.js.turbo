@@ -17,8 +17,7 @@
     "typescript": "^5.1.6"
   },
   "scripts": {
-    "watch": "tsc -w -p tsconfig.json",
-    "prepublish": "webpack --config build/webpack.main.config.js && webpack --config build/webpack.worker.config.js"
+    "watch": "tsc -w -p tsconfig.json"
   },
   "browser": "./dist/gif.js",
   "keywords": [
@@ -30,5 +29,8 @@
     "encoder"
   ],
   "license": "MIT",
-  "readmeFilename": "README.md"
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "eventemitter3": "^5.0.1"
+  }
 }

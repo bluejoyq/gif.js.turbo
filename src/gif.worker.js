@@ -1,4 +1,4 @@
-const GIFEncoder = require('./GIFEncoder.js');
+import GIFEncoder from './gif-encoder';
 
 const renderFrame = (frame) => {
   const encoder = new GIFEncoder(frame.width, frame.height);
@@ -10,10 +10,14 @@ const renderFrame = (frame) => {
   }
 
   encoder.setDispose(frame.dispose);
-  encoder.setTransparencyDifferenceThreshold(frame.transparencyDifferenceThreshold);
+  encoder.setTransparencyDifferenceThreshold(
+    frame.transparencyDifferenceThreshold,
+  );
   encoder.setApplyTransparencyOptimization(frame.applyTransparencyOptimization);
   encoder.setApplyCropOptimization(frame.applyCropOptimization);
-  const previousFrame = frame.previousFrameData ? frame.previousFrameData : null;
+  const previousFrame = frame.previousFrameData
+    ? frame.previousFrameData
+    : null;
   encoder.setTransparent(frame.transparent);
   encoder.setRepeat(frame.repeat);
   encoder.setDelay(frame.delay);
@@ -33,7 +37,13 @@ const renderFrame = (frame) => {
   frame.cursor = stream.cursor;
   frame.pageSize = stream.constructor.pageSize;
 
-  const imagePartsData = { cursor: frame.cursor, pageSize: frame.pageSize, data: frame.data, canTransfer: frame.canTransfer, index: frame.index }
+  const imagePartsData = {
+    cursor: frame.cursor,
+    pageSize: frame.pageSize,
+    data: frame.data,
+    canTransfer: frame.canTransfer,
+    index: frame.index,
+  };
   if (imagePartsData.canTransfer) {
     const transfer = imagePartsData.data.map((page) => page.buffer);
     self.postMessage(imagePartsData, transfer);
